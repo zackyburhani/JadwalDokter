@@ -24,7 +24,7 @@
         <li>
           <a href="<?php echo site_url('ControllerPoli') ?>">
             <i class="fa fa-plus-square"></i>
-            <span>Data Poli</span>
+            <span>Data POLI</span>
           </a>
         </li>
         <li>
@@ -43,6 +43,13 @@
           <a href="<?php echo site_url('ControllerDokter') ?>">
             <i class="fa fa-user"></i>
             <span>User</span>
+          </a>
+        </li>
+        <li class="header"></li>
+        <li>
+          <a href="<?php echo site_url('ControllerLogin/logout') ?>">
+            <i class="fa fa-sign-out"></i>
+            <span>Keluar</span>
           </a>
         </li>
       </ul>
