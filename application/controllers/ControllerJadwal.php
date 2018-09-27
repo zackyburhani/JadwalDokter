@@ -79,25 +79,6 @@ class ControllerJadwal extends CI_Controller {
 
 	}
 
-	public function status_hadir()
-	{
-		$id = $this->input->post('id');
-		$status_hadir = $this->input->post('status_hadir');
-
-		$data = [
-			'status_hadir' => $status_hadir
-		];
-
-		$result = $this->Model->update('id',$id,$data,'jadwal');
-		if ($result){
-			// $this->session->set_flashdata('pesan','Jadwal Berhasil Disimpan');
-	   		redirect('ControllerJadwal');
-		}else{
-			$this->session->set_flashdata('pesanGagal','Jadwal Tidak Berhasil Disimpan');
-	    	redirect('ControllerJadwal');
-		}
-	}
-
 	public function ubah()
 	{
 		$id = $this->input->post('id');

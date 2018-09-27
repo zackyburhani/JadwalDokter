@@ -70,7 +70,7 @@
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
           <li>
-            <label class="pull-right" style="color: white; font-size: 16px; margin-top: 15px; margin-right: 15px;">Tanggal : <?php echo tanggal(date("Y-m-d")); ?></label>
+            <label class="pull-right" style="color: white; font-size: 16px; margin-top: 15px; margin-right: 15px;">Tanggal : <?php echo longdate_indo(date("Y-m-d")); ?></label>
           </li>  
         </ul>
       </div>

@@ -95,4 +95,36 @@ class Model extends CI_Model {
     	}
        	return $kd;
     }
+
+    //join absen
+    public function joinAbsen()
+	{
+		try{
+			$hari = hari_indo(date("Y-m-d"));
+			$this->db->select('*');
+			$this->db->from('jadwal');
+			$this->db->join('dokter', 'jadwal.id_dokter = dokter.id_dokter');
+			$this->db->join('poli', 'poli.id_poli = dokter.id_poli');
+			$this->db->where('hari', $hari);
+			$this->db->group_by('nm_dokter');
+			$query = $this->db->get();
+			return $query->result();
+		}catch (Exception $ex) {
+			$check = false;
+		}
+	}
+
+	public function update_absen($status_hadir,$id_dokter)
+	{
+		$checkupdate = false;
+		try{
+				$hari = hari_indo(date("Y-m-d"));
+				$result = $this->db->query("UPDATE jadwal set status_hadir = '$status_hadir' where id_dokter = '$id_dokter' and hari = '$hari'");
+			$checkupdate = true;		
+		}catch (Exception $ex) {
+			$checkupdate = false;
+		}
+		return $checkupdate;
+	}
+
 }

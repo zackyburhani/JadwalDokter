@@ -16,10 +16,11 @@
           <script>
             setTimeout(function() {
               swal({
-                      title: "<?php echo $this->session->flashdata('pesan') ?>",
+                      title:"",
+                      text: "<?php echo $this->session->flashdata('pesan') ?>",
                       type: "success"
                     });
-                  }, 200);
+                  }, 800);
           </script>
         <?php } ?>
 
@@ -30,7 +31,7 @@
                       title: "<?php echo $this->session->flashdata('pesanGagal') ?>",
                       type: "error"
                     });
-                  }, 200);
+                  }, 800);
           </script>
         <?php } ?>
 
@@ -41,7 +42,6 @@
               <div class="row">
                 <div class="col-md-6">
                   <button class="btn btn-success" data-toggle="modal" href="#" data-target="#ModalEntryJadwal"><i class="fa fa-plus"></i> Tambah Data Jadwal</button>
-                  <button class="btn btn-info" data-toggle="modal" href="#" data-target="#ModalEntryJadwal"><i class="fa fa-users"></i> Abensi Dokter</button>
                 </div>
 
               </div>
@@ -278,43 +278,6 @@
 </div>
 <?php } ?>
 <!--/ modal ubah data jadwal -->
-
-
-<!-- modal ubah status hadir -->
-<?php foreach($jadwal as $jad) { ?>
-<div class="modal fade" id="status_hadir<?php echo $jad->id ?>" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title" id="myModalLabel"><i class="fa fa-users"></i> Ubah Status Kehadiran</h4>
-      </div>
-      <form method="POST" action="<?php echo site_url('ControllerJadwal/status_hadir') ?>" enctype="multipart/form-data">
-        <div class="modal-body">
-        
-          <div class="form-group">
-            <label>Hari</label>
-            <select name="status_hadir" class="form-control" style="width: 100%;">
-              <option <?php if( $jad->status_hadir=='0'){echo "selected"; } ?>  value="0">Tidak Hadir</option>
-              <option <?php if( $jad->status_hadir=='1'){echo "selected"; } ?> value="1">Hadir</option>
-              <option <?php if( $jad->status_hadir=='2'){echo "selected"; } ?> value="2">Izin</option>
-              <option <?php if( $jad->status_hadir=='3'){echo "selected"; } ?> value="3">Sakit</option>
-            </select>
-          </div>
-
-          <input type="hidden" name="id" value="<?php echo $jad->id ?>">
-
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-close"></i> Batal</button>
-          <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Simpan</button>
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
-<?php } ?>
-<!--/ modal ubah status hadir -->
 
 <script>
 function validate(a)

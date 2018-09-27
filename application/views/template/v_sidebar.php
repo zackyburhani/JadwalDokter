@@ -40,6 +40,12 @@
           </a>
         </li>
         <li>
+          <a href="<?php echo site_url('ControllerAbsensi') ?>">
+            <i class="fa fa-file-text"></i>
+            <span>Absensi Dokter</span>
+          </a>
+        </li> 
+        <li>
           <a href="<?php echo site_url('ControllerDokter') ?>">
             <i class="fa fa-user"></i>
             <span>User</span>
