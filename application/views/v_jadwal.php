@@ -11,33 +11,91 @@
     </section>
 
     <section class="content">
+
+      <?php if ($this->session->flashdata('pesan') == TRUE) { ?>
+          <script>
+            setTimeout(function() {
+              swal({
+                      title: "<?php echo $this->session->flashdata('pesan') ?>",
+                      type: "success"
+                    });
+                  }, 200);
+          </script>
+        <?php } ?>
+
+        <?php if ($this->session->flashdata('pesanGagal') == TRUE) { ?>
+           <script>
+            setTimeout(function() {
+              swal({
+                      title: "<?php echo $this->session->flashdata('pesanGagal') ?>",
+                      type: "error"
+                    });
+                  }, 200);
+          </script>
+        <?php } ?>
+
       <div class="row">
         <div class="col-lg-12">
           <div class="panel panel-default">
             <div class="panel-heading">
-              <button class="btn btn-default" data-toggle="modal" href="#" data-target="#ModalEntryJadwal"><i class="fa fa-plus"></i></button> Tambah Data Jadwal
+              <div class="row">
+                <div class="col-md-6">
+                  <button class="btn btn-success" data-toggle="modal" href="#" data-target="#ModalEntryJadwal"><i class="fa fa-plus"></i> Tambah Data Jadwal</button>
+                  <button class="btn btn-info" data-toggle="modal" href="#" data-target="#ModalEntryJadwal"><i class="fa fa-users"></i> Abensi Dokter</button>
+                </div>
+
+              </div>
             </div>
             <div class="panel-body">
-              <table style="table-layout:fixed" class="table table-striped table-bordered table-hover">
+              <table style="table-layout:fixed" class="table table-striped table-bordered table-hover" id="datatableJadwal">
                 <thead>
                   <tr>
-                    <th width="50px">No. </th>
-                    <th><center>Nama Dokter</center></th>
-                    <th><center>Hari</center></th>
-                    <th><center>Pagi</center></th>
-                    <th><center>Sore</center></th>
-                    <th><center>Kehadiran</center></th>
-                    <th width="200px" align="center;"> <center>Action</center> </th>
+                    <th width="50px"><center>No.</center> </th>
+                    <th width="250px"><center>Nama Dokter</center></th>
+                    <th width="110px"><center>Hari</center></th>
+                    <th width="90px"><center>Pagi</center></th>
+                    <th width="90px"><center>Sore</center></th>
+                    <th width="100px"><center>Kehadiran</center></th>
+                    <th width="100px" align="center;"> <center>Action</center> </th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td align="center">1. </td>
-                    <td align="center">Anjay</td>
-                    <td align="center">Dokter Gigi</td>
-                    <td align="center"><a href="" class="btn btn-sm btn-warning btn-circle" data-toggle="modal"><span class="glyphicon glyphicon-edit"></span> </a>
-                    <a href="" class="btn btn-sm btn-danger btn-circle" data-toggle="modal"><span class="glyphicon glyphicon-trash"></span> </a></td>
-                  </tr>
+                  <?php $no=1; ?>
+                  <?php foreach($jadwal as $jad) { ?>
+                    <tr>
+                      <td align="center"><?php echo $no++."."; ?> </td>
+                      <td><?php echo $jad->nm_dokter ?></td>
+                      
+                      <?php if($jad->perjanjian == null){ ?>
+                        <td align="center"><?php echo $jad->hari?></td>
+                      <?php } else { ?>
+                        <td align="center"><span style="color: red"><?php echo "*".$jad->hari?></span></td>
+                      <?php } ?>
+
+                      <?php if($jad->pagi != null) { ?>
+                        <td align="center"><?php echo $jad->pagi?></td>
+                      <?php } else { ?>
+                        <td align="center">-</td>
+                      <?php } ?>
+                      <?php if($jad->sore != null) { ?>
+                        <td align="center"><?php echo $jad->sore?></td>
+                      <?php } else { ?>
+                        <td align="center">-</td>
+                      <?php } ?>
+
+                      <?php if($jad->status_hadir == 0){ ?>
+                        <td align="center"><a href="#status_hadir<?php echo $jad->id ?>" data-toggle="modal"><span class="label label-danger">Tidak Hadir</span></a></td>
+                      <?php } else if($jad->status_hadir == 1){ ?>
+                        <td align="center"><a href="#status_hadir<?php echo $jad->id ?>" data-toggle="modal"><span class="label label-success">Hadir</span></a></td>
+                      <?php } else if($jad->status_hadir == 2){ ?>
+                        <td align="center"><a href="#status_hadir<?php echo $jad->id ?>" data-toggle="modal"><span class="label label-primary">Izin</span></a></td>
+                      <?php } else if($jad->status_hadir == 3){ ?>
+                        <td align="center"><a href="#status_hadir<?php echo $jad->id ?>" data-toggle="modal"><span class="label label-warning">Sakit</span></a></td>
+                      <?php } ?>
+                      <td align="center"><button data-target="#ModalUpdateJadwal<?php echo $jad->id ?>" class="btn btn-sm btn-warning btn-circle" data-toggle="modal"><span class="glyphicon glyphicon-edit"></span> </button>
+                      <button onclick="validate(this)" value="<?php echo $jad->id ?>" class="btn btn-danger"><i class="fa fa-trash"></i></button></td>
+                   </tr>
+                  <?php } ?>
                 </tbody>
               </table>
             </div>
@@ -48,38 +106,76 @@
   </div>
   
 <!-- modal tambah data jadwal -->
-<div class="modal fade" id="ModalEntryJadwal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="ModalEntryJadwal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title" id="myModalLabel"><i class="fa fa-users"></i> Tambah Data Jadwal</h4>
+          <h4 class="modal-title" id="myModalLabel"><i class="fa fa-calendar"></i> Tambah Data Jadwal</h4>
       </div>
-      <form method="POST" action="" enctype="multipart/form-data">
+      <form method="POST" action="<?php echo site_url('ControllerJadwal/simpan') ?>" enctype="multipart/form-data">
         <div class="modal-body">
           
-          <div class="form-group"><label>Nama Dokter</label>
-            <input required class="form-control required" data-placement="top" data-trigger="manual" type="text" name="id_dokter">
-          </div>
-                
-          <div class="form-group"><label>Hari</label>
-            <input required class="form-control required" placeholder="Input Nama Kriteria" data-placement="top" data-trigger="manual" type="text" name="nm_dokter">
-          </div>
-
-          <div class="form-group"><label>Pagi</label>
-            <input required class="form-control required" placeholder="Input Nama Kriteria" data-placement="top" data-trigger="manual" type="date" name="tgl_lahir">
-          </div>
-
-          <div class="form-group"><label>Sore</label>
-            <input required class="form-control required" placeholder="Input Nama Kriteria" data-placement="top" data-trigger="manual" type="date" name="tgl_lahir">
-          </div>
-
-          <div class="form-group"><label>Nama Poli</label>
-            <div class="custom-select my-1 mr-sm-2">
-              <select class="form-control" name="kriteria">
-                <option value="">poli1</option>
-                <option value="">poli2</option>
+          <div class="form-group">
+            <label>Nama Dokter</label>
+              <select name="id_dokter" class="form-control select2" data-placeholder="Pilih Nama Dokter" style="width: 100%;">
+                <option></option>
+                <?php foreach($dokter as $data1){ ?>
+                  <option value="<?php echo $data1->id_dokter ?>"><?php echo $data1->nm_dokter ?></option>
+                <?php } ?>
               </select>
+          </div>
+
+          <div class="form-group">
+            <label>Hari</label>
+            <select name="hari[]" class="form-control select2" multiple="multiple" data-placeholder="Pilih Hari" style="width: 100%;">
+              <option value="Senin">Senin</option>
+              <option value="Selasa">Selasa</option>
+              <option value="Rabu">Rabu</option>
+              <option value="Kamis">Kamis</option>
+              <option value="Jumat">Jumat</option>
+              <option value="Sabtu">Sabtu</option>
+              <option value="Minggu">Minggu</option>
+            </select>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="bootstrap-timepicker">
+                <div class="form-group">
+                  <label>Jam Praktek</label>
+                  <div class="input-group">
+                    <input type="text" name="jam_awal" class="form-control timepicker">
+                    <div class="input-group-addon">
+                      <i class="fa fa-clock-o"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="bootstrap-timepicker">
+                <div class="form-group">
+                  <label>Sampai</label>
+                  <div class="input-group">
+                    <input type="text" name="jam_akhir" class="form-control timepicker">
+                    <div class="input-group-addon">
+                      <i class="fa fa-clock-o"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top: 10px" class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+            <label>
+              <input name="hari_janji" value="1" type="checkbox" class="minimal">
+                Hari Perjanjian
+            </label> <span style="color: red">(*Optional)</span>
+          </div>
             </div>
           </div>
 
@@ -92,4 +188,149 @@
     </div>
   </div>
 </div>
-<!--/ modal tambah data dokter -->
+<!--/ modal tambah data jadwal -->
+
+<!-- modal ubah data jadwal -->
+<?php foreach($jadwal as $jad) { ?>
+<div class="modal fade" id="ModalUpdateJadwal<?php echo $jad->id ?>" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="myModalLabel"><i class="fa fa-calendar"></i> ubah Jadwal</h4>
+      </div>
+      <form method="POST" action="<?php echo site_url('ControllerJadwal/ubah') ?>" enctype="multipart/form-data">
+        <div class="modal-body">
+          
+          <input type="hidden" name="id" value="<?php echo $jad->id ?>">
+
+          <div class="form-group">
+            <label>Nama Dokter</label>
+              <select name="id_dokter" class="form-control select2" data-placeholder="Pilih Nama Dokter" style="width: 100%;">
+                <option></option>
+                <?php foreach($dokter as $data1){ ?>
+                  <option <?php if($jad->id_dokter == $data1->id_dokter): echo "selected"; endif; ?> value="<?php echo $data1->id_dokter ?>"><?php echo $data1->nm_dokter ?></option>
+                <?php } ?>
+              </select>
+          </div>
+
+          <div class="form-group">
+            <label>Hari</label>
+            <select name="hari" class="form-control" style="width: 100%;">
+              <option <?php if( $jad->hari=='Senin'){echo "selected"; } ?> value="Senin">Senin</option>
+              <option <?php if( $jad->hari=='Selasa'){echo "selected"; } ?> value="Selasa">Selasa</option>
+              <option <?php if( $jad->hari=='Rabu'){echo "selected"; } ?> value="Rabu">Rabu</option>
+              <option <?php if( $jad->hari=='Kamis'){echo "selected"; } ?> value="Kamis">Kamis</option>
+              <option <?php if( $jad->hari=='Jumat'){echo "selected"; } ?> value="Jumat">Jumat</option>
+              <option <?php if( $jad->hari=='Sabtu'){echo "selected"; } ?> value="Sabtu">Sabtu</option>
+              <option <?php if( $jad->hari=='Minggu'){echo "selected"; } ?> value="Minggu">Minggu</option>
+            </select>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="bootstrap-timepicker">
+                <div class="form-group">
+                  <label>Jam Praktek</label>
+                  <div class="input-group">
+                    <input type="text" name="jam_awal" class="form-control timepicker">
+                    <div class="input-group-addon">
+                      <i class="fa fa-clock-o"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="bootstrap-timepicker">
+                <div class="form-group">
+                  <label>Sampai</label>
+                  <div class="input-group">
+                    <input type="text" name="jam_akhir" class="form-control timepicker">
+                    <div class="input-group-addon">
+                      <i class="fa fa-clock-o"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top: 10px" class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+            <label>
+              <input name="hari_janji" <?php if($jad->perjanjian=='1'){echo "checked"; } ?> value="1" type="checkbox" class="minimal">
+                Hari Perjanjian
+            </label> <span style="color: red">(*Optional)</span>
+          </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-close"></i> Batal</button>
+          <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Simpan</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<?php } ?>
+<!--/ modal ubah data jadwal -->
+
+
+<!-- modal ubah status hadir -->
+<?php foreach($jadwal as $jad) { ?>
+<div class="modal fade" id="status_hadir<?php echo $jad->id ?>" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="myModalLabel"><i class="fa fa-users"></i> Ubah Status Kehadiran</h4>
+      </div>
+      <form method="POST" action="<?php echo site_url('ControllerJadwal/status_hadir') ?>" enctype="multipart/form-data">
+        <div class="modal-body">
+        
+          <div class="form-group">
+            <label>Hari</label>
+            <select name="status_hadir" class="form-control" style="width: 100%;">
+              <option <?php if( $jad->status_hadir=='0'){echo "selected"; } ?>  value="0">Tidak Hadir</option>
+              <option <?php if( $jad->status_hadir=='1'){echo "selected"; } ?> value="1">Hadir</option>
+              <option <?php if( $jad->status_hadir=='2'){echo "selected"; } ?> value="2">Izin</option>
+              <option <?php if( $jad->status_hadir=='3'){echo "selected"; } ?> value="3">Sakit</option>
+            </select>
+          </div>
+
+          <input type="hidden" name="id" value="<?php echo $jad->id ?>">
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-close"></i> Batal</button>
+          <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Simpan</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<?php } ?>
+<!--/ modal ubah status hadir -->
+
+<script>
+function validate(a)
+{
+    var id= a.value;
+    swal({
+            title: "",
+            text: "Anda Yakin Ingin menghapus ?",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Yes !",
+            closeOnConfirm: false }, function()
+        {
+            $(location).attr('href','<?php echo base_url('ControllerJadwal/hapus/')?>'+id);
+        }
+    );
+}
+ </script>

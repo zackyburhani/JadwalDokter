@@ -61,10 +61,6 @@
 						<button type="submit" class="login100-form-btn btn-block">
 							Login
 						</button>
-            <button type="submit" onclick="tes()" class="login100-form-btn btn-block">
-              Login
-            </button>
-            
 					</div>
 				</form>
 			</div>
@@ -89,16 +85,5 @@
 	<script src="<?php echo base_url('assets/Login/js/main.js')?>"></script>
 <!--===============================================================================================-->
   <script src="<?php echo base_url('assets/AdminLTE/dist/js/sweetalert.min.js')?>"></script>
-
-  <script type="text/javascript">
-    function tes(){
-      setTimeout(function() {
-                swal({
-                    title: "Data Berhasil Disimpan",
-                    type: "success"
-                });
-            }, 200);
-    }
-  </script>
 </body>
 </html>

@@ -41,6 +41,11 @@
 <script src="<?php echo base_url('assets/AdminLTE/dist/js/adminlte.min.js')?>"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo base_url('assets/AdminLTE/dist/js/demo.js')?>"></script>
+<!-- Datatables -->
+<script src="<?php echo base_url('assets/AdminLTE/bower_components/datatables.net/js/jquery.dataTables.min.js')?>"></script>
+<script src="<?php echo base_url('assets/AdminLTE/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js')?>"></script>
+<!-- SweetAlert -->
+<script src="<?php echo base_url('assets/AdminLTE/dist/js/sweetalert.min.js')?>"></script>
 <!-- Page script -->
 <script>
   $(function () {
@@ -109,5 +114,34 @@
     })
   })
 </script>
+
+<script type="text/javascript">
+  $(document).ready( function () {
+    $('#datatableJadwal').DataTable();
+} );
+</script>
+
+
+<script type="text/javascript">
+   
+    //Update Barang
+        $('#btn_status').on('click',function(){
+            var status_hadir=$('#status_hadir2').val();
+            var id=$('#id2').val();
+            console.log(id);
+            $.ajax({
+                type : "POST",
+                url  : "<?php echo base_url('index.php/barang/update_barang')?>",
+                dataType : "JSON",
+                data : {kobar:kobar , nabar:nabar, harga:harga},
+                success: function(data){
+                    $('[name="status_hadir"]').val("");
+                }
+            });
+            return false;
+        });
+
+</script>
+
 </body>
 </html>
