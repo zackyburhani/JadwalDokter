@@ -46,7 +46,7 @@
           </a>
         </li> 
         <li>
-          <a href="<?php echo site_url('ControllerDokter') ?>">
+          <a href="<?php echo site_url('ControllerUser') ?>">
             <i class="fa fa-user"></i>
             <span>User</span>
           </a>

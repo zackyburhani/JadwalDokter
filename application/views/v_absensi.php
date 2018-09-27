@@ -43,7 +43,6 @@
                 <div class="col-md-6">
                   <button class="btn btn-success" data-toggle="modal" href="#" data-target="#ModalEntryJadwal"><i class="fa fa-users"></i> Abensi Dokter</button>
                 </div>
-
               </div>
             </div>
             <div class="panel-body">
@@ -51,7 +50,7 @@
                 <thead>
                   <tr>
                     <th width="20px"><center>No.</center> </th>
-                    <th width="150"><center>Nama POLI</center></th>
+                    <th width="200"><center>Nama POLI</center></th>
                     <th width="250px"><center>Nama Dokter</center></th>
                     <th width="100px"><center>Keterangan</center></th>
                   </tr>
@@ -61,7 +60,7 @@
                   <?php foreach($absen as $data){ ?>
                   <tr>
                     <td align="center"><?php echo $no++."." ?></td>
-                    <td align=""><?php echo $data->nm_poli ?></td>
+                    <td align=""><?php echo strtoupper($data->nm_poli) ?></td>
                     <td align=""><?php echo $data->nm_dokter ?></td>
 
                      <?php if($data->status_hadir == 0){ ?>
@@ -91,7 +90,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title" id="myModalLabel"><i class="fa fa-users"></i> Absensi Dokter</h4>
+          <h4 class="modal-title" id="myModalLabel"><i class="fa fa-users"></i> Absensi Dokter - <?php echo shortdate_indo(date("Y-m-d")) ?></h4>
       </div>
       <form method="POST" action="<?php echo site_url('ControllerAbsensi/simpan') ?>" enctype="multipart/form-data">
         <div class="modal-body">
