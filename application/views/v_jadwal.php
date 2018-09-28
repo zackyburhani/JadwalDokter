@@ -103,7 +103,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
           <h4 class="modal-title" id="myModalLabel"><i class="fa fa-calendar"></i> Tambah Data Jadwal</h4>
       </div>
-      <form method="POST" action="<?php echo site_url('ControllerJadwal/simpan') ?>" enctype="multipart/form-data">
+      <form method="POST" action="<?php echo site_url('jadwal/simpan') ?>" enctype="multipart/form-data">
         <div class="modal-body">
           
           <div class="form-group">
@@ -189,7 +189,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
           <h4 class="modal-title" id="myModalLabel"><i class="fa fa-calendar"></i> ubah Jadwal</h4>
       </div>
-      <form method="POST" action="<?php echo site_url('ControllerJadwal/ubah') ?>" enctype="multipart/form-data">
+      <form method="POST" action="<?php echo site_url('jadwal/ubah') ?>" enctype="multipart/form-data">
         <div class="modal-body">
           
           <input type="hidden" name="id" value="<?php echo $jad->id ?>">
@@ -282,7 +282,7 @@ function validate(a)
             confirmButtonText: "Yes !",
             closeOnConfirm: false }, function()
         {
-            $(location).attr('href','<?php echo base_url('ControllerJadwal/hapus/')?>'+id);
+            $(location).attr('href','<?php echo base_url('jadwal/hapus/')?>'+id);
         }
     );
 }

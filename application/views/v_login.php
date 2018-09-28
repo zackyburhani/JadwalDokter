@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Login V15</title>
+	<title>Halaman Login</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
@@ -52,7 +52,7 @@
 					</span>
 				</div>
 
-				<form class="login100-form validate-form" method="POST" action="<?php echo site_url('ControllerLogin/login') ?>">
+				<form class="login100-form validate-form" method="POST" action="<?php echo site_url('login/auth') ?>">
 					<div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
 						<span class="label-input100">Username</span>
 						<input class="input100" type="text" name="username" placeholder="Enter username">
@@ -72,7 +72,7 @@
 					<div class="container-login100-form-btn">
 						<div class="row">
 							<div class="col-md-6">
-								<a href="<?php echo site_url('ControllerList') ?>" class="login100-form-btn btn-block">
+								<a href="<?php echo site_url('') ?>" class="login100-form-btn btn-block">
 								Kembali
 								</a>
 							</div>

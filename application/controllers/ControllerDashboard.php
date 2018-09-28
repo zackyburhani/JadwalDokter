@@ -9,7 +9,7 @@ class ControllerDashboard extends CI_Controller {
 		$username = $this->session->username;
 
 		if($username == null){
-			redirect('ControllerLogin');
+			redirect('login');
 		} 
 	}
 

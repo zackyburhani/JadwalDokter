@@ -35,6 +35,13 @@
             <i class="fa fa-bars"></i>
           </button>
         </div>
+        <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+          <li>
+            <label class="pull-right" style="color: white; font-size: 16px; margin-top: 15px; margin-right: 15px;"><?php echo longdate_indo(date("Y-m-d")); ?></label>
+          </li>  
+        </ul>
+      </div>
 
 
       </div>
@@ -62,7 +69,7 @@
                   <div class="icon">
                     <i class="fa fa-users fa-fw"></i>
                   </div>
-                  <a href="<?php echo site_url('ControllerList/kehadiran') ?>" class="small-box-footer">Lihat  Selengkapnya <i class="fa fa-arrow-circle-right"></i></a>
+                  <a href="<?php echo site_url('list/kehadiran') ?>" class="small-box-footer">Lihat  Selengkapnya <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
               </div>
               <!-- ./col -->
@@ -75,7 +82,7 @@
                   <div class="icon">
                     <i class="fa fa-user"></i>
                   </div>
-                  <a href="<?php echo site_url('ControllerLogin') ?>" class="small-box-footer">Lihat Selengkapnya <i class="fa fa-arrow-circle-right"></i></a>
+                  <a href="<?php echo site_url('login') ?>" class="small-box-footer">Lihat Selengkapnya <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
               </div>
               <!-- ./col -->

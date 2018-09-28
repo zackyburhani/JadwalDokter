@@ -10,7 +10,7 @@ class ControllerUser extends CI_Controller {
 		$username = $this->session->username;
 
 		if($username == null){
-			redirect('ControllerLogin');
+			redirect('login');
 		} 
 	}
 
@@ -52,7 +52,7 @@ class ControllerUser extends CI_Controller {
 			echo json_encode($result);
 		}else{
 			$this->session->set_flashdata('pesanGagal','Jadwal Tidak Berhasil Disimpan');
-	   		redirect('ControllerUser');
+	   		redirect('user');
 		}
 	}
 

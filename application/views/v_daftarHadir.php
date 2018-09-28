@@ -74,7 +74,7 @@
         <?php } ?>
         </tbody>
         </table>
-        <a href="<?php echo site_url('ControllerList') ?>" class="btn btn-success"><i></i> Kembali</a>
+        <a href="<?php echo site_url('') ?>" class="btn btn-success"><i></i> Kembali</a>
       </div>    
     </div>
   </div>

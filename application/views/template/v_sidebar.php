@@ -22,38 +22,38 @@
           </a>
         </li>
  -->        <li>
-          <a href="<?php echo site_url('ControllerPoli') ?>">
+          <a href="<?php echo site_url('poli') ?>">
             <i class="fa fa-plus-square"></i>
             <span>Data POLI</span>
           </a>
         </li>
         <li>
-          <a href="<?php echo site_url('ControllerDokter') ?>">
+          <a href="<?php echo site_url('dokter') ?>">
             <i class="fa fa-users"></i>
             <span>Data Dokter</span>
           </a>
         </li>
         <li>
-          <a href="<?php echo site_url('ControllerJadwal') ?>">
+          <a href="<?php echo site_url('jadwal') ?>">
             <i class="fa fa-calendar"></i>
             <span>Jadwal</span>
           </a>
         </li>
         <li>
-          <a href="<?php echo site_url('ControllerAbsensi') ?>">
+          <a href="<?php echo site_url('absensi') ?>">
             <i class="fa fa-file-text"></i>
             <span>Absensi Dokter</span>
           </a>
         </li> 
         <li>
-          <a href="<?php echo site_url('ControllerUser') ?>">
+          <a href="<?php echo site_url('user') ?>">
             <i class="fa fa-user"></i>
             <span>User</span>
           </a>
         </li>
         <li class="header"></li>
         <li>
-          <a href="<?php echo site_url('ControllerLogin/logout') ?>">
+          <a href="<?php echo site_url('login/logout') ?>">
             <i class="fa fa-sign-out"></i>
             <span>Keluar</span>
           </a>

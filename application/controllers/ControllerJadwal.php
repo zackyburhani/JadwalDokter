@@ -10,7 +10,7 @@ class ControllerJadwal extends CI_Controller {
 		$username = $this->session->username;
 
 		if($username == null){
-			redirect('ControllerLogin');
+			redirect('login');
 		} 
 	}
 
@@ -71,10 +71,10 @@ class ControllerJadwal extends CI_Controller {
 
 		if ($result){
 			$this->session->set_flashdata('pesan','Jadwal Berhasil Disimpan');
-	   		redirect('ControllerJadwal');
+	   		redirect('Jadwal');
 		}else{
 			$this->session->set_flashdata('pesanGagal','Jadwal Tidak Berhasil Disimpan');
-	   		redirect('ControllerJadwal');
+	   		redirect('Jadwal');
 		}
 
 	}
@@ -119,10 +119,10 @@ class ControllerJadwal extends CI_Controller {
 
 		if ($result){
 			// $this->session->set_flashdata('pesan','Jadwal Berhasil Disimpan');
-	   		redirect('ControllerJadwal');
+	   		redirect('Jadwal');
 		}else{
 			$this->session->set_flashdata('pesanGagal','Jadwal Tidak Berhasil Disimpan');
-	    	redirect('ControllerJadwal');
+	    	redirect('Jadwal');
 		}
 	}
 
@@ -130,10 +130,10 @@ class ControllerJadwal extends CI_Controller {
 	{
 		$result = $this->Model->hapus('id',$id,'jadwal');
 		if ($result){
-		   	redirect('ControllerJadwal');
+		   	redirect('Jadwal');
 		}else{
 			$this->session->set_flashdata('pesanGagal','Jadwal Tidak Berhasil Dihapus');
-	   		redirect('ControllerJadwal');
+	   		redirect('Jadwal');
 		}
 	}
 

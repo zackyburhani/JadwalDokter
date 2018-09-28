@@ -153,7 +153,7 @@
         {
           $.ajax({
               type : "POST",
-              url  : "<?php echo base_url('ControllerUser/ubah')?>",
+              url  : "<?php echo base_url('user/ubah')?>",
               dataType : "JSON",
               data : $("#registerSubmit").serialize(),
               success: function(data){
@@ -164,7 +164,7 @@
                       type: "success",
                       closeOnEsc: false
                   }, function(){
-                    $(location).attr('href','<?php echo site_url('ControllerLogin/logout');?>');    
+                    $(location).attr('href','<?php echo site_url('login/logout');?>');    
                   });
                 }, 300);
                 
