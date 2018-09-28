@@ -27,10 +27,8 @@ class ControllerLogin extends CI_Controller {
 
 		if($checkUsername==NULL){
 
-			echo "<script type='text/javascript'>
-               alert ('Maaf Username Dan Password Anda Salah !');
-               window.location.replace('');
-      			</script>";
+			$this->session->set_flashdata('pesanGagal','Kesalahan');
+			redirect('ControllerLogin');
 
 		}else{
 			$newdata = array(
@@ -41,7 +39,7 @@ class ControllerLogin extends CI_Controller {
 			  );
 			//set seassion
 			$this->session->set_userdata($newdata);
-			redirect('ControllerDashboard');
+			redirect('ControllerPoli');
 		}
 	}
 

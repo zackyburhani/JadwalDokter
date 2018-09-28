@@ -132,7 +132,6 @@
   });
 
   $('#btn_user').on('click',function(){
-
     var password = $('#password').val();
     var repassword =$('#repassword').val();
 
@@ -176,7 +175,6 @@
     }   
     return false;
   });
-
 
 </script>
 

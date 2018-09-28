@@ -11,9 +11,15 @@ class ControllerList extends CI_Controller {
 
 	public function index()
 	{	
+		$this->load->view('v_index');
+	}
+
+	public function kehadiran()
+	{	
 		$data = [
 			'jadwal' => $jadwal = $this->Model->joinAbsen()
 		];
 		$this->load->view('v_daftarHadir',$data);
 	}
+
 }

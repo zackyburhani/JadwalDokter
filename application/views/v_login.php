@@ -31,12 +31,24 @@
 </head>
 <body>
 
+	<?php if ($this->session->flashdata('pesanGagal') == TRUE) { ?>
+        <script>
+            setTimeout(function() {
+              	swal({
+                      title: "",
+                      text: "Username atau Password Salah",
+                      type: "error"
+                });
+            }, 600);
+        </script>
+    <?php } ?>
+
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
 				<div class="login100-form-title" style="background-image: url(assets/Login/images/bg.jpg);">
 					<span class="login100-form-title-1">
-						Sign In
+						Silahkan Masuk
 					</span>
 				</div>
 
@@ -58,9 +70,18 @@
 					</div>
 
 					<div class="container-login100-form-btn">
-						<button type="submit" class="login100-form-btn btn-block">
-							Login
-						</button>
+						<div class="row">
+							<div class="col-md-6">
+								<a href="<?php echo site_url('ControllerList') ?>" class="login100-form-btn btn-block">
+								Kembali
+								</a>
+							</div>
+							<div class="col-md-6">
+								<button type="submit" class="login100-form-btn btn-block">
+								Login
+								</button>
+							</div>
+						</div>
 					</div>
 				</form>
 			</div>
