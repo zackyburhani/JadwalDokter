@@ -6,7 +6,7 @@ class ControllerPoli extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('MPoli');
+		$this->load->model(['MPoli','Model']);
 	}
 
 	//halaman awal poli
@@ -16,15 +16,14 @@ class ControllerPoli extends CI_Controller {
 		$data = [
 			'getAllpoli' => $getAllpoli
 		];
-		
 		$this->load->view('template/v_header');
 		$this->load->view('template/v_sidebar');
-		$this->load->view('v_poli');
+		$this->load->view('v_poli',$data); //datanya belom lu taro shay....
 		$this->load->view('template/v_footer');	 
 	}
 	
 	//tambah poli
-	public function tambahpoli()
+	public function simpan()
 	{
 		$id_poli	 		= $this->input->post('id_poli');
 		$nm_poli 			= $this->input->post('nm_poli');
@@ -46,17 +45,17 @@ class ControllerPoli extends CI_Controller {
 	}
 	
 	//update poli
-	public function updatepoli()
+	public function ubah()
 	{
 		$id_poli	 		= $this->input->post('id_poli');
 		$nm_poli 			= $this->input->post('nm_poli');
-				
+		
 		$data = [
-			'id_poli'				=> $id_poli,
-			'nm_poli' 				=> $nm_poli						
+			'nm_poli' 				=> $nm_poli		
 		];
 
-		$result = $this->MPoli->updatepoli($data);
+		//$result = $this->MPoli->updatepoli($data);
+		$result = $this->Model->update('id_poli',$id_poli,$data,'poli');
 
 		if ($result){
 			$this->session->set_flashdata('pesan','Data Berhasil Diubah');
@@ -68,23 +67,14 @@ class ControllerPoli extends CI_Controller {
 	}
 	
 	//menghapus poli
-	public function deletepoli()
+	public function hapus($id)
 	{
-		$id_poli = $this->input->post('poli');
-		$validasi = $this->MGuru->validasiHapus('id_poli',$id_poli);
-
-		if($validasi->id_poli == $id_poli){
-			$this->session->set_flashdata('pesanGagal','Data poli Terhubung Dengan Data Lain');
+		$result = $this->Model->hapus('id_poli',$id,'poli');
+		if ($result){
+		   	redirect('poli');
+		}else{
+			$this->session->set_flashdata('pesanGagal','Poli Tidak Berhasil Dihapus');
 	   		redirect('poli');
-		} else {
-			$result = $this->MPoli->Deletepoli($id_poli);
-			if ($result){
-				$this->session->set_flashdata('pesan','Data Berhasil Dihapus');
-		   		redirect('poli');
-			}else{
-				$this->session->set_flashdata('pesanGagal','Data Tidak Berhasil Dihapus');
-	    		redirect('poli');
-			}
 		}
 	}
 }

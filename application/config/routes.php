@@ -60,9 +60,15 @@ $route['login/logout'] = 'ControllerLogin/logout';
 
 //poli
 $route['poli'] = 'ControllerPoli';
+$route['poli/simpan'] = 'ControllerPoli/simpan';
+$route['poli/ubah'] = 'ControllerPoli/ubah';
+$route['poli/hapus/(:any)'] = 'ControllerPoli/hapus/$1';
 
 //dokter
 $route['dokter'] = 'ControllerDokter';
+$route['dokter/simpan'] = 'ControllerDokter/simpan';
+$route['dokter/ubah'] = 'ControllerDokter/ubah';
+$route['dokter/hapus/(:any)'] = 'ControllerDokter/hapus/$1';
 
 //jadwal
 $route['jadwal'] = 'ControllerJadwal';

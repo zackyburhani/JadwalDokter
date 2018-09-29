@@ -6,24 +6,28 @@ class ControllerDokter extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('MDokter');
+		$this->load->model(['MDokter', 'MPoli']);
 	}
 
 	//awal halaman dokternya
 	public function index()
 	{	
 		$getAllDokter = $this->MDokter->getAllDokter();
+		$getAllpoli   = $this->MPoli->getAllpoli();
+		$getNmpoli	  = $this->MDokter->getNmpoli();
 		$data= [
-			'getAllDokter' => $getAllDokter
+			'getAllDokter' => $getAllDokter,
+			'getAllpoli'   => $getAllpoli,
+			'getNmpoli'	   => $getNmpoli
 		];
 		$this->load->view('template/v_header');
 		$this->load->view('template/v_sidebar');
-		$this->load->view('v_dokter');
+		$this->load->view('v_dokter', $data);
 		$this->load->view('template/v_footer');	 
 	}
 	
 	//tambah dokter
-	public function tambahDokter()
+	public function simpan()
 	{
 		$id_dokter = $this->input->post('id_dokter');
 		$nm_dokter = $this->input->post('nm_dokter');
@@ -48,7 +52,7 @@ class ControllerDokter extends CI_Controller {
 	}
 	
 	//update dokter
-	public function updateDokter()
+	public function ubah()
 	{
 		$id_dokter = $this->input->post('id_dokter');
 		$nm_dokter = $this->input->post('nm_dokter');

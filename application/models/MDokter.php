@@ -31,6 +31,12 @@ class MDokter extends CI_Model {
 		return $result->row();
 	}
 	
+	public function getNmpoli()
+	{
+		$result = $this->db->query("SELECT nm_poli,dokter.id_dokter FROM dokter JOIN poli ON dokter.id_poli = poli.id_poli GROUP BY nm_poli ORDER BY 2");
+		return $result->result();
+	}
+	
 	public function updateDokter($id,$data)
 	{
 		$checkupdate = false;
