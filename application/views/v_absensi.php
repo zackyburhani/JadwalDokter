@@ -37,7 +37,7 @@
             <div class="panel-heading">
               <div class="row">
                 <div class="col-md-6">
-                  <button class="btn btn-success" data-toggle="modal" href="#" data-target="#ModalEntryJadwal"><i class="fa fa-users"></i> Abensi Dokter</button>
+                  <!-- <button class="btn btn-success" data-toggle="modal" href="#" data-target="#ModalEntryJadwal"><i class="fa fa-users"></i> Abensi Dokter</button> -->
                   <button class="btn btn-danger" onclick="reset()"><i class="fa fa-refresh"></i> Reset Absensi</button>
                 </div>
               </div>
@@ -103,8 +103,8 @@
             <tr>
               <td></td>
               <td>
-                <label class="radio-inline"><input type="radio" required value="0" checked name="b<?php echo $th++ ?>">Tidak Hadir</label>
-                <label class="radio-inline"><input type="radio" required value="1" name="b<?php echo $h++ ?>">Hadir</label>
+                <label class="radio-inline"><input type="radio" required value="1" checked name="b<?php echo $h++ ?>">Hadir</label>
+                <label class="radio-inline"><input type="radio" required value="0" name="b<?php echo $th++ ?>">Tidak Hadir</label>
                 <label class="radio-inline"><input type="radio" required value="2" name="b<?php echo $i++ ?>">Izin</label>
                 <label class="radio-inline"><input type="radio" required value="3" name="b<?php echo $s++ ?>">Sakit</label>
               </td>

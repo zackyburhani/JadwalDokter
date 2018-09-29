@@ -57,7 +57,7 @@
               <?php } ?>
 
               <?php if($jad->status_hadir == 0){ ?>
-                <td align="center"><span class="label label-danger">Tidak Hadir</span></td>
+                <td align="center"><span class="label label-danger" style="color: red">Tidak Hadir</span></td>
               <?php } else if($jad->status_hadir == 1){ ?>
                 <td align="center"><span class="label label-success">Hadir</span></td>
               <?php } else if($jad->status_hadir == 2){ ?>
@@ -69,7 +69,7 @@
               <?php if($jad->perjanjian == null){ ?>
                 <td align="center">-</td>
               <?php } else { ?>
-                <td align="center"><span style="color: red">*Dengan Perjanjian</span></td>
+                <td align="center"><span >*Dengan Perjanjian</span></td>
               <?php } ?>
 
           </tr>

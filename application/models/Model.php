@@ -78,6 +78,23 @@ class Model extends CI_Model {
 		}catch (Exception $ex) {
 			$check = false;
 		}
+	}
+
+	//join dokter dan poli
+	public function joinDokter()
+	{
+		try{
+
+			$this->db->select('*');
+			$this->db->from('dokter');
+			$this->db->join('poli', 'poli.id_poli = dokter.id_poli');
+			$query = $this->db->get();
+
+			return $query->result();
+
+		}catch (Exception $ex) {
+			$check = false;
+		}
 	}	
 
 	//kode
@@ -138,5 +155,37 @@ class Model extends CI_Model {
 		}
 		return $checkupdate;	
 	}
+
+	//kode poli
+	public function getKodePoli()
+    {
+       	$q  = $this->db->query("SELECT MAX(RIGHT(id_poli,6)) as kd_max from poli");
+       	$kd = "";
+    	if($q->num_rows() > 0) {
+        	foreach ($q->result() as $k) {
+          		$tmp = ((int)$k->kd_max)+1;
+           		$kd = sprintf("%06s",$tmp);
+        	}
+    	} else {
+         $kd = "000001";
+    	}
+       	return "POLI".$kd;
+    }
+
+    //kode poli
+	public function getKodeDokter()
+    {
+       	$q  = $this->db->query("SELECT MAX(RIGHT(id_dokter,6)) as kd_max from dokter");
+       	$kd = "";
+    	if($q->num_rows() > 0) {
+        	foreach ($q->result() as $k) {
+          		$tmp = ((int)$k->kd_max)+1;
+           		$kd = sprintf("%06s",$tmp);
+        	}
+    	} else {
+         $kd = "000001";
+    	}
+       	return "DKTR".$kd;
+    }
 
 }
