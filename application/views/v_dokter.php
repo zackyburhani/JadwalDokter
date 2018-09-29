@@ -28,13 +28,18 @@
                   </tr>
                 </thead>
                 <tbody>
+				<?php $no=1; ?>
+				<?php if(!empty($getAllpoli)) { ?>
+				<?php foreach($getAllDokter as $dok) { ?>
                   <tr>
-                    <td align="center">1. </td>
-                    <td align="center">Anjay</td>
-                    <td align="center">Dokter Gigi</td>
+                    <td align="center"><?php echo $no++; ?>. </td>
+                    <td align="center"><?php echo ($data->nm_dokter) ?></td>
+                    <td align="center"><?php echo ($data->nm_poli)?></td>
                     <td align="center"><a href="" class="btn btn-sm btn-warning btn-circle" data-toggle="modal"><span class="glyphicon glyphicon-edit"></span> </a>
                     <a href="" class="btn btn-sm btn-danger btn-circle" data-toggle="modal"><span class="glyphicon glyphicon-trash"></span> </a></td>
                   </tr>
+				<?php } ?>
+				<?php } ?>
                 </tbody>
               </table>
             </div>

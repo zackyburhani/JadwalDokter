@@ -18,21 +18,27 @@
               <button class="btn btn-default" data-toggle="modal" href="#" data-target="#ModalEntryPoli"><i class="fa fa-plus"></i></button> Tambah Data Poli
             </div>
             <div class="panel-body">
+			
               <table style="table-layout:fixed" class="table table-striped table-bordered table-hover">
                 <thead>
                   <tr>
-                    <th width="50px">No. </th>
+                    <th width="50px" align="center">No. </th>
                     <th><center>Nama Poli</center></th>
                     <th width="500px" align="center;"> <center>Action</center> </th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody>				
+				<?php $no=1; ?>
+				<?php if(!empty($getAllpoli)) { ?>
+				<?php foreach($getAllpoli as $pol){ ?>
                   <tr>
-                    <td align="center">1. </td>
-                    <td align="center">Dokter Gigi</td>
+                    <td align="center"><?php echo $no++; ?>.</td>
+                    <td align="center"><?php echo ($data->nm_poli)?></td>
                     <td align="center"><a href="" class="btn btn-sm btn-warning btn-circle" data-toggle="modal"><span class="glyphicon glyphicon-edit"></span> </a>
                     <a href="" class="btn btn-sm btn-danger btn-circle" data-toggle="modal"><span class="glyphicon glyphicon-trash"></span> </a></td>
                   </tr>
+				<?php } ?>
+				<?php } ?>
                 </tbody>
               </table>
             </div>
