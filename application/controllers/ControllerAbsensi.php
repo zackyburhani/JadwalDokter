@@ -10,7 +10,7 @@ class ControllerAbsensi extends CI_Controller {
 		$username = $this->session->username;
 
 		if($username == null){
-			redirect('ControllerLogin');
+			redirect('login');
 		} 
 	}
 
@@ -52,10 +52,10 @@ class ControllerAbsensi extends CI_Controller {
 
 		if ($result){
 			$this->session->set_flashdata('pesan','Absensi Berhasil');
-	   		redirect('ControllerAbsensi');
+	   		redirect('absensi');
 		}else{
 			$this->session->set_flashdata('pesanGagal','Gagal Melakukan Absensi');
-	   		redirect('ControllerAbsensi');
+	   		redirect('absensi');
 		}
 	}
 
@@ -71,10 +71,10 @@ class ControllerAbsensi extends CI_Controller {
 		$result = $this->Model->update('id',$id,$data,'jadwal');
 		if ($result){
 			// $this->session->set_flashdata('pesan','Jadwal Berhasil Disimpan');
-	   		redirect('ControllerAbsensi');
+	   		redirect('absensi');
 		}else{
 			$this->session->set_flashdata('pesanGagal','Jadwal Tidak Berhasil Disimpan');
-	    	redirect('ControllerAbsensi');
+	    	redirect('absensi');
 		}
 	}
 }

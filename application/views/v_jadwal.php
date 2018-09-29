@@ -20,7 +20,7 @@
                       text: "<?php echo $this->session->flashdata('pesan') ?>",
                       type: "success"
                     });
-                  }, 800);
+                  }, 600);
           </script>
         <?php } ?>
 
@@ -31,7 +31,7 @@
                       title: "<?php echo $this->session->flashdata('pesanGagal') ?>",
                       type: "error"
                     });
-                  }, 800);
+                  }, 600);
           </script>
         <?php } ?>
 
@@ -55,7 +55,6 @@
                     <th width="110px"><center>Hari</center></th>
                     <th width="90px"><center>Pagi</center></th>
                     <th width="90px"><center>Sore</center></th>
-                    <th width="100px"><center>Kehadiran</center></th>
                     <th width="100px" align="center;"> <center>Action</center> </th>
                   </tr>
                 </thead>
@@ -83,17 +82,8 @@
                         <td align="center">-</td>
                       <?php } ?>
 
-                      <?php if($jad->status_hadir == 0){ ?>
-                        <td align="center"><a href="#status_hadir<?php echo $jad->id ?>" data-toggle="modal"><span class="label label-danger">Tidak Hadir</span></a></td>
-                      <?php } else if($jad->status_hadir == 1){ ?>
-                        <td align="center"><a href="#status_hadir<?php echo $jad->id ?>" data-toggle="modal"><span class="label label-success">Hadir</span></a></td>
-                      <?php } else if($jad->status_hadir == 2){ ?>
-                        <td align="center"><a href="#status_hadir<?php echo $jad->id ?>" data-toggle="modal"><span class="label label-primary">Izin</span></a></td>
-                      <?php } else if($jad->status_hadir == 3){ ?>
-                        <td align="center"><a href="#status_hadir<?php echo $jad->id ?>" data-toggle="modal"><span class="label label-warning">Sakit</span></a></td>
-                      <?php } ?>
                       <td align="center"><button data-target="#ModalUpdateJadwal<?php echo $jad->id ?>" class="btn btn-sm btn-warning btn-circle" data-toggle="modal"><span class="glyphicon glyphicon-edit"></span> </button>
-                      <button onclick="validate(this)" value="<?php echo $jad->id ?>" class="btn btn-danger"><i class="fa fa-trash"></i></button></td>
+                      <button onclick="validate(this)" value="<?php echo $jad->id ?>" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button></td>
                    </tr>
                   <?php } ?>
                 </tbody>
@@ -113,7 +103,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
           <h4 class="modal-title" id="myModalLabel"><i class="fa fa-calendar"></i> Tambah Data Jadwal</h4>
       </div>
-      <form method="POST" action="<?php echo site_url('ControllerJadwal/simpan') ?>" enctype="multipart/form-data">
+      <form method="POST" action="<?php echo site_url('jadwal/simpan') ?>" enctype="multipart/form-data">
         <div class="modal-body">
           
           <div class="form-group">
@@ -199,7 +189,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
           <h4 class="modal-title" id="myModalLabel"><i class="fa fa-calendar"></i> ubah Jadwal</h4>
       </div>
-      <form method="POST" action="<?php echo site_url('ControllerJadwal/ubah') ?>" enctype="multipart/form-data">
+      <form method="POST" action="<?php echo site_url('jadwal/ubah') ?>" enctype="multipart/form-data">
         <div class="modal-body">
           
           <input type="hidden" name="id" value="<?php echo $jad->id ?>">
@@ -292,7 +282,7 @@ function validate(a)
             confirmButtonText: "Yes !",
             closeOnConfirm: false }, function()
         {
-            $(location).attr('href','<?php echo base_url('ControllerJadwal/hapus/')?>'+id);
+            $(location).attr('href','<?php echo base_url('jadwal/hapus/')?>'+id);
         }
     );
 }

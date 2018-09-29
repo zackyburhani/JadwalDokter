@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Jadwal Dokter</title>
+  <title>Jadwal Praktek Dokter</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -53,9 +53,9 @@
     <!-- Logo -->
     <a href="index2.html" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>A</b>LT</span>
+      <span class="logo-mini"><b>RD</b></span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Admin</b>LTE</span>
+      <span class="logo-lg"><b>RSIA DHIA</b></span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -70,7 +70,7 @@
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
           <li>
-            <label class="pull-right" style="color: white; font-size: 16px; margin-top: 15px; margin-right: 15px;">Tanggal : <?php echo longdate_indo(date("Y-m-d")); ?></label>
+            <label class="pull-right" style="color: white; font-size: 16px; margin-top: 15px; margin-right: 15px;"><?php echo longdate_indo(date("Y-m-d")); ?></label>
           </li>  
         </ul>
       </div>

@@ -49,6 +49,39 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'ControllerDashboard';
-$route['404_override'] = '';
+$route['default_controller'] = 'ControllerList';
+$route['404_override'] = 'ControllerLogin/not_found';
 $route['translate_uri_dashes'] = FALSE;
+
+//login
+$route['login'] = 'ControllerLogin';
+$route['login/auth'] = 'ControllerLogin/login';
+$route['login/logout'] = 'ControllerLogin/logout';
+
+//poli
+$route['poli'] = 'ControllerPoli';
+
+//dokter
+$route['dokter'] = 'ControllerDokter';
+
+//jadwal
+$route['jadwal'] = 'ControllerJadwal';
+$route['jadwal/simpan'] = 'ControllerJadwal/simpan';
+$route['jadwal/hapus/(:any)'] = 'ControllerJadwal/hapus/$1';
+$route['jadwal/ubah/(:any)'] = 'ControllerJadwal/ubah/$1';
+
+//absensi
+$route['absensi'] = 'ControllerAbsensi';
+$route['absensi/simpan'] = 'ControllerAbsensi/simpan';
+$route['absensi/hapus/(:any)'] = 'ControllerAbsensi/hapus/$1';
+$route['absensi/ubah/(:any)'] = 'ControllerAbsensi/ubah/$1';
+$route['absensi/kehadiran'] = 'ControllerAbsensi/status_hadir';
+
+//user
+$route['user'] = 'ControllerUser';
+$route['ubah/ubah'] = 'ControllerUser/ubah';
+
+//list
+$route['list/kehadiran'] = 'ControllerList/kehadiran';
+
+

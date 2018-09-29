@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Login V15</title>
+	<title>Halaman Login</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
@@ -31,16 +31,28 @@
 </head>
 <body>
 
+	<?php if ($this->session->flashdata('pesanGagal') == TRUE) { ?>
+        <script>
+            setTimeout(function() {
+              	swal({
+                      title: "",
+                      text: "Username atau Password Salah",
+                      type: "error"
+                });
+            }, 600);
+        </script>
+    <?php } ?>
+
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
-				<div class="login100-form-title" style="background-image: url(assets/Login/images/bg-01.jpg);">
+				<div class="login100-form-title" style="background-image: url(assets/Login/images/bg.jpg);">
 					<span class="login100-form-title-1">
-						Sign In
+						Silahkan Masuk
 					</span>
 				</div>
 
-				<form class="login100-form validate-form" method="POST" action="<?php echo site_url('ControllerLogin/login') ?>">
+				<form class="login100-form validate-form" method="POST" action="<?php echo site_url('login/auth') ?>">
 					<div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
 						<span class="label-input100">Username</span>
 						<input class="input100" type="text" name="username" placeholder="Enter username">
@@ -58,9 +70,18 @@
 					</div>
 
 					<div class="container-login100-form-btn">
-						<button type="submit" class="login100-form-btn btn-block">
-							Login
-						</button>
+						<div class="row">
+							<div class="col-md-6">
+								<a href="<?php echo site_url('') ?>" class="login100-form-btn btn-block">
+								Kembali
+								</a>
+							</div>
+							<div class="col-md-6">
+								<button type="submit" class="login100-form-btn btn-block">
+								Login
+								</button>
+							</div>
+						</div>
 					</div>
 				</form>
 			</div>

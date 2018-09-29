@@ -123,23 +123,58 @@
 
 
 <script type="text/javascript">
-   
-    //Update Barang
-        $('#btn_status').on('click',function(){
-            var status_hadir=$('#status_hadir2').val();
-            var id=$('#id2').val();
-            console.log(id);
-            $.ajax({
-                type : "POST",
-                url  : "<?php echo base_url('index.php/barang/update_barang')?>",
-                dataType : "JSON",
-                data : {kobar:kobar , nabar:nabar, harga:harga},
-                success: function(data){
-                    $('[name="status_hadir"]').val("");
-                }
-            });
-            return false;
-        });
+  
+  $(document).keydown(function(e) {
+    // ESCAPE key pressed
+    if (e.keyCode == 27) {
+        return false;
+    }
+  });
+
+  $('#btn_user').on('click',function(){
+    var password = $('#password').val();
+    var repassword =$('#repassword').val();
+
+    if(password != repassword) {
+      swal({
+          title:"Kesalahan",
+          text: "Password Tidak Sama",
+          type: "error"
+      });
+    } else {
+      swal({
+        title: "",
+        text: "Anda Yakin Ingin Mengubah Data ?",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#DD6B55",
+        confirmButtonText: "Yes !",
+        closeOnConfirm: false }, function()
+        {
+          $.ajax({
+              type : "POST",
+              url  : "<?php echo base_url('user/ubah')?>",
+              dataType : "JSON",
+              data : $("#registerSubmit").serialize(),
+              success: function(data){
+                setTimeout(function() {
+                  swal({
+                      title:"Berhasil Dirubah",
+                      text: "Silahkan Masuk Kembali !",
+                      type: "success",
+                      closeOnEsc: false
+                  }, function(){
+                    $(location).attr('href','<?php echo site_url('login/logout');?>');    
+                  });
+                }, 300);
+                
+              }
+          });
+        }
+      );
+    }   
+    return false;
+  });
 
 </script>
 

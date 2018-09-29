@@ -13,40 +13,46 @@ class ControllerLogin extends CI_Controller {
 	{	
 		$username = $this->session->username;
 		if($username != null){
-			redirect('ControllerDashboard');
-		} 
-		$this->load->view('v_login');
+			redirect('poli');
+		} else {
+			$this->load->view('v_login');
+		}
+
 	}
 
 	public function login()
 	{
 		$username = $this->input->post('username');
 		$password = md5($this->input->post('password'));
-
+		
 		$checkUsername = $this->Model->auth($username,$password);
 
 		if($checkUsername==NULL){
-
-			echo "<script type='text/javascript'>
-               alert ('Maaf Username Dan Password Anda Salah !');
-               window.location.replace('index');
-      			</script>";
+			$this->session->set_flashdata('pesanGagal','Kesalahan');
+			redirect('Login');
 
 		}else{
+
 			$newdata = array(
-				'username'  => $checkUsername->username,
-				'nm_user'  => $checkUsername->nm_user,
-				'email'  => $checkUsername->email,
+				'id' => $checkUsername->id,
+				'username' => $checkUsername->username,
+				'nm_user' => $checkUsername->nm_user,
+				'email' => $checkUsername->email,
 			  );
 			//set seassion
 			$this->session->set_userdata($newdata);
-			redirect('ControllerDashboard');
+			redirect('poli');
 		}
+	}
+
+	public function not_found()
+	{
+		$this->load->view('v_404');
 	}
 
 	public function logout()
 	{
 		$this->session->sess_destroy();
-		redirect('ControllerLogin');
+		redirect('login');
 	}
 }
