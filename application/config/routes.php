@@ -60,15 +60,15 @@ $route['login/logout'] = 'ControllerLogin/logout';
 
 //poli
 $route['poli'] = 'ControllerPoli';
+$route['poli/simpan'] = 'ControllerPoli/simpan';
+$route['poli/update'] = 'ControllerPoli/simpan';
+$route['poli/hapus/(:any)'] = 'ControllerPoli/hapus/$1';
 
 //dokter
 $route['dokter'] = 'ControllerDokter';
 
 //jadwal
 $route['jadwal'] = 'ControllerJadwal';
-$route['jadwal/simpan'] = 'ControllerJadwal/simpan';
-$route['jadwal/hapus/(:any)'] = 'ControllerJadwal/hapus/$1';
-$route['jadwal/ubah/(:any)'] = 'ControllerJadwal/ubah/$1';
 
 //absensi
 $route['absensi'] = 'ControllerAbsensi';
@@ -76,10 +76,11 @@ $route['absensi/simpan'] = 'ControllerAbsensi/simpan';
 $route['absensi/hapus/(:any)'] = 'ControllerAbsensi/hapus/$1';
 $route['absensi/ubah/(:any)'] = 'ControllerAbsensi/ubah/$1';
 $route['absensi/kehadiran'] = 'ControllerAbsensi/status_hadir';
+$route['absensi/reset'] = 'ControllerAbsensi/reset';
 
 //user
 $route['user'] = 'ControllerUser';
-$route['ubah/ubah'] = 'ControllerUser/ubah';
+$route['user/ubah'] = 'ControllerUser/ubah';
 
 //list
 $route['list/kehadiran'] = 'ControllerList/kehadiran';

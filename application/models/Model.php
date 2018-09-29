@@ -127,4 +127,16 @@ class Model extends CI_Model {
 		return $checkupdate;
 	}
 
+	public function reset($data)
+	{
+		$checkupdate = false;
+		try{
+			$this->db->update('jadwal',$data);
+			$checkupdate = true;
+		}catch (Exception $ex) {
+			$checkupdate = false;
+		}
+		return $checkupdate;	
+	}
+
 }

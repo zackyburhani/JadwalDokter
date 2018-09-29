@@ -77,4 +77,13 @@ class ControllerAbsensi extends CI_Controller {
 	    	redirect('absensi');
 		}
 	}
+
+	public function reset()
+	{	
+		$data = [
+			'status_hadir' => '0'
+		];
+		$result = $this->Model->reset($data);
+		redirect('absensi');
+	}
 }

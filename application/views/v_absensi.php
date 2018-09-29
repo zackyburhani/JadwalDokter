@@ -4,10 +4,6 @@
         Data Absensi
         <small></small>
       </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-        <li><a href="#">Data Absensi</a></li>
-      </ol>
     </section>
 
     <section class="content">
@@ -42,6 +38,7 @@
               <div class="row">
                 <div class="col-md-6">
                   <button class="btn btn-success" data-toggle="modal" href="#" data-target="#ModalEntryJadwal"><i class="fa fa-users"></i> Abensi Dokter</button>
+                  <button class="btn btn-danger" onclick="reset()"><i class="fa fa-refresh"></i> Reset Absensi</button>
                 </div>
               </div>
             </div>
@@ -106,7 +103,7 @@
             <tr>
               <td></td>
               <td>
-                <label class="radio-inline"><input type="radio" required value="0" name="b<?php echo $th++ ?>">Tidak Hadir</label>
+                <label class="radio-inline"><input type="radio" required value="0" checked name="b<?php echo $th++ ?>">Tidak Hadir</label>
                 <label class="radio-inline"><input type="radio" required value="1" name="b<?php echo $h++ ?>">Hadir</label>
                 <label class="radio-inline"><input type="radio" required value="2" name="b<?php echo $i++ ?>">Izin</label>
                 <label class="radio-inline"><input type="radio" required value="3" name="b<?php echo $s++ ?>">Sakit</label>
@@ -163,19 +160,18 @@
 <!--/ modal ubah status hadir -->
 
 <script>
-function validate(a)
+function reset()
 {
-    var id= a.value;
     swal({
             title: "",
-            text: "Anda Yakin Ingin menghapus ?",
+            text: "Anda Yakin ?",
             type: "warning",
             showCancelButton: true,
             confirmButtonColor: "#DD6B55",
             confirmButtonText: "Yes !",
             closeOnConfirm: false }, function()
         {
-            $(location).attr('href','<?php echo base_url('jadwal/hapus/')?>'+id);
+            $(location).attr('href','<?php echo base_url('absensi/reset/')?>');
         }
     );
 }

@@ -9,7 +9,7 @@ class ControllerList extends CI_Controller {
 		$this->load->model('Model');
 		$username = $this->session->username;
 		if($username != null){
-			redirect('poli');
+			redirect('absensi');
 		} 
 	}
 

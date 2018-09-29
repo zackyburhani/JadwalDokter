@@ -4,10 +4,6 @@
         Data Poli
         <small></small>
       </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-        <li><a href="#">Data Poli</a></li>
-      </ol>
     </section>
 
     <section class="content">

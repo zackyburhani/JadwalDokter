@@ -13,7 +13,7 @@ class ControllerLogin extends CI_Controller {
 	{	
 		$username = $this->session->username;
 		if($username != null){
-			redirect('poli');
+			redirect('absensi');
 		} else {
 			$this->load->view('v_login');
 		}
@@ -29,7 +29,7 @@ class ControllerLogin extends CI_Controller {
 
 		if($checkUsername==NULL){
 			$this->session->set_flashdata('pesanGagal','Kesalahan');
-			redirect('Login');
+			redirect('login');
 
 		}else{
 
@@ -41,7 +41,7 @@ class ControllerLogin extends CI_Controller {
 			  );
 			//set seassion
 			$this->session->set_userdata($newdata);
-			redirect('poli');
+			redirect('absensi');
 		}
 	}
 
