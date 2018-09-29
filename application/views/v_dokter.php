@@ -33,11 +33,11 @@
 				<?php foreach($getAllDokter as $dok) { ?>
                   <tr>
                     <td align="center"><?php echo $no++; ?>. </td>
-                    <td align="center"><?php echo ($dok->nm_dokter) ?></td>
-                    <td align="center"></td>
+                    <td><?php echo strtoupper($dok->nm_dokter) ?></td>
+                    <td align="center"><?php echo $dok->nm_poli ?></td>
                     <td align="center">
-						<a href="" class="btn btn-sm btn-warning btn-circle" data-toggle="modal" data-target="#ModalUpdateDokter"<?php echo $dok->id_dokter ?>><span class="glyphicon glyphicon-edit"></span> </a>
-						<a href="" class="btn btn-sm btn-danger btn-circle" data-toggle="modal" onclick="validate(this)" value="<?php echo $dok->id_dokter ?>"><span class="glyphicon glyphicon-trash"></span> </a>
+						<button class="btn btn-sm btn-warning btn-circle" data-toggle="modal" data-target="#ModalUpdateDokter"<?php echo $dok->id_dokter ?>><span class="glyphicon glyphicon-edit"></span> </button>
+						<button class="btn btn-sm btn-danger btn-circle" data-toggle="modal" onclick="validate(this)" value="<?php echo $dok->id_dokter ?>"><span class="glyphicon glyphicon-trash"></span> </button>
 					</td>
                   </tr>
 				<?php } ?>

@@ -6,7 +6,7 @@ class ControllerDokter extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model(['MDokter', 'MPoli']);
+		$this->load->model(['MDokter', 'MPoli', 'Model']);
 	}
 
 	//awal halaman dokternya
@@ -58,14 +58,15 @@ class ControllerDokter extends CI_Controller {
 		$nm_dokter = $this->input->post('nm_dokter');
 		$tgl_lahir = $this->input->post('tgl_lahir');
 		$alamat = $this->input->post('alamat');
+		
 		$data = [
-			'id_dokter' => $id_dokter,
 			'nm_dokter' => $nm_dokter,
 			'tgl_lahir' => $tgl_lahir,
 			'alamat' => $alamat
 		];
 
-		$result = $this->MDokter->updateDokter($data);
+		//$result = $this->MDokter->updateDokter($data);
+		$result = $this->Model->update('id_dokter',$id_dokter,$data,'dokter');
 
 		if ($result){
 			$this->session->set_flashdata('pesan','Data Berhasil Diubah');
@@ -77,7 +78,7 @@ class ControllerDokter extends CI_Controller {
 	}
 	
 	//hapus dokternya
-	public function deleteDokter()
+	/*public function deleteDokter()
 	{
 		$id_dokter = $this->input->post('dokter');
 		$validasi = $this->MDokter->validasiHapus('id_dokter',$id_dokter);
@@ -95,6 +96,18 @@ class ControllerDokter extends CI_Controller {
 	    		redirect('dokter');
 			}
 		}
+	}*/
+			
+	public function hapus($id)
+	{
+		$result = $this->Model->hapus('id_dokter',$id,'dokter');
+		if ($result){
+		   	redirect('dokter');
+		}else{
+			$this->session->set_flashdata('pesanGagal','Poli Tidak Berhasil Dihapus');
+	   		redirect('dokter');
+		}
 	}
+	
 	
 }
