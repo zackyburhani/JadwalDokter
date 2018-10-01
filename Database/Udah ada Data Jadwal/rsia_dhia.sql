@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 29, 2018 at 06:26 PM
+-- Generation Time: Oct 01, 2018 at 06:12 AM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -106,14 +106,14 @@ INSERT INTO `jadwal` (`id`, `hari`, `pagi`, `sore`, `status_hadir`, `perjanjian`
 (50, 'Kamis', NULL, '17:00 - 18:30', '0', NULL, 'DKTR000004'),
 (51, 'Senin', '09:00 - 11:00', '', '0', NULL, 'DKTR000005'),
 (52, 'Kamis', '09:00 - 11:00', '', '0', NULL, 'DKTR000005'),
-(53, 'Selasa', '10:00 - 00:00', NULL, '0', NULL, 'DKTR000005'),
-(54, 'Rabu', '10:00 - 00:00', NULL, '0', NULL, 'DKTR000005'),
+(53, 'Selasa', '10:00 - 12:00', '', '0', NULL, 'DKTR000005'),
+(54, 'Rabu', '10:00 - 12:00', '', '0', NULL, 'DKTR000005'),
 (55, 'Jumat', NULL, '17:00 - 19:00', '0', NULL, 'DKTR000005'),
-(56, 'Sabtu', NULL, '13:00 - 15:00', '0', '1', 'DKTR000005'),
+(56, 'Sabtu', NULL, '13:00 - 15:00', '1', '1', 'DKTR000005'),
 (57, 'Senin', NULL, '18:00 - 20:00', '0', NULL, 'DKTR000006'),
 (58, 'Selasa', NULL, '18:00 - 20:00', '0', NULL, 'DKTR000006'),
 (59, 'Jumat', '09:00 - 11:00', NULL, '0', NULL, 'DKTR000006'),
-(60, 'Sabtu', '09:00 - 11:00', NULL, '0', NULL, 'DKTR000006'),
+(60, 'Sabtu', '09:00 - 11:00', NULL, '1', NULL, 'DKTR000006'),
 (61, 'Selasa', '07:30 - 09:30', NULL, '0', NULL, 'DKTR000007'),
 (62, 'Rabu', '07:30 - 09:30', NULL, '0', NULL, 'DKTR000007'),
 (63, 'Sabtu', NULL, '16:30 - 19:30', '0', NULL, 'DKTR000007'),
@@ -122,7 +122,7 @@ INSERT INTO `jadwal` (`id`, `hari`, `pagi`, `sore`, `status_hadir`, `perjanjian`
 (66, 'Rabu', NULL, '20:30 - 21:30', '0', NULL, 'DKTR000008'),
 (67, 'Kamis', NULL, '20:30 - 21:30', '0', NULL, 'DKTR000008'),
 (68, 'Jumat', NULL, '20:30 - 21:30', '0', NULL, 'DKTR000008'),
-(69, 'Sabtu', '00:00 - 14:00', '', '0', '1', 'DKTR000008'),
+(69, 'Sabtu', '', '12:00 - 14:00', '0', '1', 'DKTR000008'),
 (70, 'Rabu', NULL, '18:00 - 20:00', '0', NULL, 'DKTR000009'),
 (71, 'Senin', '10:00 - 12:00', NULL, '0', NULL, 'DKTR000010'),
 (72, 'Rabu', '10:00 - 12:00', NULL, '0', NULL, 'DKTR000010'),
@@ -131,7 +131,7 @@ INSERT INTO `jadwal` (`id`, `hari`, `pagi`, `sore`, `status_hadir`, `perjanjian`
 (75, 'Senin', NULL, '18:00 - 20:00', '0', NULL, 'DKTR000011'),
 (76, 'Kamis', NULL, '18:00 - 20:00', '0', NULL, 'DKTR000011'),
 (77, 'Selasa', '10:00 - 12:00', NULL, '0', NULL, 'DKTR000011'),
-(78, 'Sabtu', '10:00 - 00:00', NULL, '0', NULL, 'DKTR000012'),
+(78, 'Sabtu', '10:00 - 12:00', '', '0', NULL, 'DKTR000012'),
 (79, 'Selasa', NULL, '18:00 - 20:00', '0', NULL, 'DKTR000013'),
 (80, 'Sabtu', NULL, '17:00 - 20:00', '0', NULL, 'DKTR000013'),
 (81, 'Jumat', '10:00 - 12:00', NULL, '0', NULL, 'DKTR000014'),
@@ -148,7 +148,7 @@ INSERT INTO `jadwal` (`id`, `hari`, `pagi`, `sore`, `status_hadir`, `perjanjian`
 (92, 'Kamis', NULL, '18:00 - 08:00', '0', NULL, 'DKTR000020'),
 (93, 'Jumat', '08:00 - 18:00', NULL, '0', NULL, 'DKTR000017'),
 (94, 'Jumat', NULL, '18:00 - 08:00', '0', NULL, 'DKTR000018'),
-(95, 'Sabtu', '08:00 - 18:00', NULL, '0', NULL, 'DKTR000016'),
+(95, 'Sabtu', '08:00 - 18:00', NULL, '1', NULL, 'DKTR000016'),
 (96, 'Sabtu', '', '18:00 - 08:00', '0', NULL, 'DKTR000021'),
 (97, 'Minggu', '08:00 - 18:00', NULL, '0', NULL, 'DKTR000020'),
 (98, 'Minggu', NULL, '18:00 - 08:00', '0', NULL, 'DKTR000020');
