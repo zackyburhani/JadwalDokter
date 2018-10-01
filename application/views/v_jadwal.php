@@ -220,7 +220,21 @@
                 <div class="form-group">
                   <label>Jam Praktek</label>
                   <div class="input-group">
-                    <input type="text" name="jam_awal" class="form-control timepicker">
+                    <?php $jam = substr($jad->sore, 0,5); 
+
+                      if($jad->pagi == null){
+                        $jam = substr($jad->sore, 0,5);
+                        $jam2 = substr($jad->sore, 8,5);                      
+                      } else {
+                        $jam = substr($jad->pagi, 0,5);
+                        $jam2 = substr($jad->pagi, 8,5);
+                      }
+
+                    ?>
+
+                    <?php $jam_awal = date("g:i a", strtotime($jam)); ?>
+
+                    <input type="text" value="<?php echo $jam_awal ?>" name="jam_awal" class="form-control timepicker">
                     <div class="input-group-addon">
                       <i class="fa fa-clock-o"></i>
                     </div>
@@ -233,7 +247,10 @@
                 <div class="form-group">
                   <label>Sampai</label>
                   <div class="input-group">
-                    <input type="text" name="jam_akhir" class="form-control timepicker">
+
+                    <?php $jam_akhir = date("g:i a", strtotime($jam2)); ?>
+
+                    <input type="text" name="jam_akhir" value="<?php echo $jam_akhir ?>" class="form-control timepicker">
                     <div class="input-group-addon">
                       <i class="fa fa-clock-o"></i>
                     </div>
